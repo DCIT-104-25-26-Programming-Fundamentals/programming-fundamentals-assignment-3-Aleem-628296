@@ -59,4 +59,37 @@
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
 
+const readlineSync = require('readline-sync');
 
+function printSingleTable(num) {
+    console.log(`\nMultiplication Table for ${num}:`);
+    for (let i = 1; i <= 12; i++) {
+        console.log(`${num}  x  ${i.toString().padStart(2)}  =  ${num * i}`);
+    }
+}
+
+function printTablesUpToN(n) {
+    if (n <= 0) {
+        console.log("Error: Please enter a positive integer.");
+        return;
+    }
+
+    for (let num = 1; num <= n; num++) {
+        printSingleTable(num);
+        if (num < n) {
+            console.log("---------------------------");
+        }
+    }
+}
+
+function main() {
+    // Part A
+    const numA = readlineSync.questionInt('Enter a number for its table (Part A): ');
+    printSingleTable(numA);
+
+    // Part B
+    const numB = readlineSync.questionInt('\nEnter N to see tables from 1 to N (Part B): ');
+    printTablesUpToN(numB);
+}
+
+main();
